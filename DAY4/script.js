@@ -5,7 +5,6 @@ function eventcall(){
     alert("quiiiiiiiiiiiiiiiiiiit horsing around")
 }
 
-function eventcall2(){
-    let a = document.getElementById("what1")
-    alert()
+function openWindow(){
+    window.open( "parent", "width=500px", "height=500px");
 }
