@@ -26,8 +26,12 @@
             font-size: larger;
             text-overflow: none;
         }
+        #what1, #what2, #what3{
+            background-color: whitesmoke;
+        }
     </style>
-</head>
+    
+    </html>
 <body>
 
 <div id="event-container"> 
@@ -43,7 +47,7 @@
 
     </form> -->
 
-    <form action="">
+    <!-- <form action="">
          <h1 >Mouse Events</h1>
         <label for="">Keydown:</label><br>
         <input type="text" onkeydown="alert(this.value)" id="what1"><br><br>
@@ -51,6 +55,17 @@
         <input type="text" onkeyup="alert(this.value)" id="what2"><br><br>
         <label for="">Keypress:</label><br>
         <input type="text" onkeypress="alert(this.value)" id="what3"><br><br>
+
+    </form> -->
+    <form action="" id="whatpapa">
+        
+        <h1>Mouse Events</h1>
+        <label for="">Keydown:</label><br>
+        <input type="text" onkeydown="document.getElementById('whatpapa').style.background=this.value" id="what1"><br><br>
+        <label for="">Keyup:</label><br>
+        <input type="text" onkeyup="document.getElementById('what2').style.background=this.value" id="what2"><br><br>
+        <label for="">Keypress:</label><br>
+        <input type="text" onkeypress ="document.getElementById('what3').style.background=this.value" id="what3"><br><br>
 
     </form>
 </div>
