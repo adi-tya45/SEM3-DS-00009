@@ -23,10 +23,10 @@
 // button.emit('click');
 // button.emit('mouseover');
 
-// const fs = require('fs');
+const fs = require('fs');
 
-// fs.readFile(__filename, () => {
-//     setTimeout(() => console.log('🕒 setTimeout inside I/O'), 0);
-//     setImmediate(() => console.log('🏃 setImmediate inside I/O'));
-//     process.nextTick(() => console.log('⚡ process.nextTick inside I/O'));
-// });
+fs.readFile(__filename, () => {
+    setTimeout(() => console.log('🕒 setTimeout inside I/O'), 0);
+    setImmediate(() => console.log('🏃 setImmediate inside I/O'));
+    process.nextTick(() => console.log('⚡ process.nextTick inside I/O'));
+});
