@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Challenge</title>
+    <link rel="stylesheet" href="assignment1.css">
+</head>
+
+<body>
+    <!-- Main Form Wrapper -->
+    <form id="quizForm" onsubmit="submitForm(event)">
+        <fieldset>
+            <div class="mainbody">
+                
+                <!-- PAGE 1: Student Details -->
+                <div id="page1" class="quiz-page">
+                    <header class="mainheader">
+                        <h1 id="mainheading">Student Quiz Form</h1>
+                        <p class="description">
+                            Please fill in your details before proceeding to the quiz. All fields are mandatory.
+                        </p>
+                    </header>
+                    <div class="maintext">
+                        <label for="name">Name: </label><br>
+                        <input type="text" id="name" required placeholder="Write Your Name: "><br><br>
+                        
+                        <label for="roll_no">Roll no.: </label> <br>
+                        <input type="number" id="roll_no" required placeholder="Write Your Roll No.: "><br><br>
+                        
+                        <label>Course: </label><br>
+                        <input type="radio" id="course_1" name="course" required value="B.Tech">
+                        <label for="course_1">B.Tech</label>
+                        <input type="radio" id="course_2" name="course" required value="MBA">
+                        <label for="course_2">MBA</label><br><br>
+                        
+                        <label for="department">Department: </label><br>
+                        <input type="text" id="department" required placeholder="Write Your Department "><br><br>
+                        
+                        <label>Section: </label><br>
+                        <input type="radio" id="section_radio1" required name="section" value="A">
+                        <label for="section_radio1">A</label>
+                        <input type="radio" id="section_radio2" required name="section" value="B">
+                        <label for="section_radio2">B</label>
+                        <input type="radio" id="section_radio3" required name="section" value="C">
+                        <label for="section_radio3">C</label><br><br>
+
+                        <button type="button" onclick="nextPage('page1', 'page2')">Next</button>
+                    </div>
+                </div>
+
+                <!-- PAGE 2: Quiz Questions -->
+                <div id="page2" class="quiz-page" style="display: none;">
+                    <header class="mainheader">
+                        <h1>Quiz Questions</h1>
+                        <p class="description">Answer the following questions carefully.</p>
+                    </header>
+                    <div class="maintext">
+                        <p><strong>Q1. What does HTML stand for?</strong></p>
+                        <input type="radio" id="q1_a" name="q1" value="A" required>
+                        <label for="q1_a">Hyper Text Markup Language</label><br>
+                        <input type="radio" id="q1_b" name="q1" value="B">
+                        <label for="q1_b">High Text Machine Language</label><br><br>
+
+                        <p><strong>Q2. Which language is used for styling web pages?</strong></p>
+                        <input type="radio" id="q2_a" name="q2" value="A" required>
+                        <label for="q2_a">JavaScript</label><br>
+                        <input type="radio" id="q2_b" name="q2" value="B">
+                        <label for="q2_b">CSS</label><br><br>
+
+                        <p><strong>Q3. Which of these is a JavaScript framework?</strong></p>
+                        <input type="radio" id="q3_a" name="q3" value="A" required>
+                        <label for="q3_a">React</label><br>
+                        <input type="radio" id="q3_b" name="q3" value="B">
+                        <label for="q3_b">Django</label><br><br>
+
+                        <button type="button" onclick="prevPage('page2', 'page1')">Previous</button>
+                        <button type="button" onclick="nextPage('page2', 'page3')">Next</button>
+                    </div>
+                </div>
+
+                <!-- PAGE 3: Declaration & Submit -->
+                <div id="page3" class="quiz-page" style="display: none;">
+                    <header class="mainheader">
+                        <h1>Declaration</h1>
+                    </header>
+                    <div class="maintext">
+                        <p>
+                            <input type="checkbox" id="declaration" required>
+                            <label for="declaration">I hereby declare that all the answers provided by me are my own original work and I have not used any unfair means to complete this quiz.</label>
+                        </p>
+                        <br>
+                        <button type="button" onclick="prevPage('page3', 'page2')">Previous</button>
+                        <button type="submit">Submit Quiz</button>
+                    </div>
+                </div>
+
+            </div>
+        </fieldset>
+    </form>
+
+    <script src="assignment1.js"></script>
+</body>
+
+</html>
