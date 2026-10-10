@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <!-- Main Form Wrapper -->
     <form id="quizForm" onsubmit="submitForm(event)">
         <fieldset>
             <div class="mainbody">
@@ -18,16 +17,14 @@
                 <div id="page1" class="quiz-page">
                     <header class="mainheader">
                         <h1 id="mainheading">Student Quiz Form</h1>
-                        <p class="description">
-                            Please fill in your details before proceeding to the quiz. All fields are mandatory.
-                        </p>
+                        <p class="description">Please fill in your details before proceeding to the quiz.</p>
                     </header>
                     <div class="maintext">
                         <label for="name">Name: </label><br>
                         <input type="text" id="name" required placeholder="Write Your Name: "><br><br>
                         
                         <label for="roll_no">Roll no.: </label> <br>
-                        <input type="number" id="roll_no" required placeholder="Write Your Roll No.: "><br><br>
+                        <input type="text" id="roll_no" required placeholder="Write Your Roll No.: "><br><br>
                         
                         <label>Course: </label><br>
                         <input type="radio" id="course_1" name="course" required value="B.Tech">
@@ -46,37 +43,68 @@
                         <input type="radio" id="section_radio3" required name="section" value="C">
                         <label for="section_radio3">C</label><br><br>
 
-                        <button type="button" onclick="nextPage('page1', 'page2')">Next</button>
+                        <button type="button" onclick="startQuiz()">Start Quiz</button>
                     </div>
                 </div>
 
-                <!-- PAGE 2: Quiz Questions -->
+                <!-- PAGE 2: Quiz Container (Shows 1 question at a time) -->
                 <div id="page2" class="quiz-page" style="display: none;">
                     <header class="mainheader">
-                        <h1>Quiz Questions</h1>
-                        <p class="description">Answer the following questions carefully.</p>
+                        <h1>Question <span id="questionNumberDisplay">1</span> of 5</h1>
+                        <p id="timeDisplay" style="color: red; font-weight: bold; font-size: 1.2rem;">Time Remaining: 30s</p>
                     </header>
                     <div class="maintext">
-                        <p><strong>Q1. What does HTML stand for?</strong></p>
-                        <input type="radio" id="q1_a" name="q1" value="A" required>
-                        <label for="q1_a">Hyper Text Markup Language</label><br>
-                        <input type="radio" id="q1_b" name="q1" value="B">
-                        <label for="q1_b">High Text Machine Language</label><br><br>
+                        
+                        <!-- Question 1 -->
+                        <div id="q1_container" class="question-container">
+                            <p><strong>Q1. What does HTML stand for?</strong></p>
+                            <input type="radio" id="q1_a" name="q1" value="A">
+                            <label for="q1_a">Hyper Text Markup Language</label><br>
+                            <input type="radio" id="q1_b" name="q1" value="B">
+                            <label for="q1_b">High Text Machine Language</label><br><br>
+                            <button type="button" onclick="nextQuestion()">Next Question</button>
+                        </div>
 
-                        <p><strong>Q2. Which language is used for styling web pages?</strong></p>
-                        <input type="radio" id="q2_a" name="q2" value="A" required>
-                        <label for="q2_a">JavaScript</label><br>
-                        <input type="radio" id="q2_b" name="q2" value="B">
-                        <label for="q2_b">CSS</label><br><br>
+                        <!-- Question 2 -->
+                        <div id="q2_container" class="question-container" style="display: none;">
+                            <p><strong>Q2. Which language is used for styling web pages?</strong></p>
+                            <input type="radio" id="q2_a" name="q2" value="A">
+                            <label for="q2_a">JavaScript</label><br>
+                            <input type="radio" id="q2_b" name="q2" value="B">
+                            <label for="q2_b">CSS</label><br><br>
+                            <button type="button" onclick="nextQuestion()">Next Question</button>
+                        </div>
 
-                        <p><strong>Q3. Which of these is a JavaScript framework?</strong></p>
-                        <input type="radio" id="q3_a" name="q3" value="A" required>
-                        <label for="q3_a">React</label><br>
-                        <input type="radio" id="q3_b" name="q3" value="B">
-                        <label for="q3_b">Django</label><br><br>
+                        <!-- Question 3 -->
+                        <div id="q3_container" class="question-container" style="display: none;">
+                            <p><strong>Q3. Which of these is a JavaScript framework?</strong></p>
+                            <input type="radio" id="q3_a" name="q3" value="A">
+                            <label for="q3_a">React</label><br>
+                            <input type="radio" id="q3_b" name="q3" value="B">
+                            <label for="q3_b">Django</label><br><br>
+                            <button type="button" onclick="nextQuestion()">Next Question</button>
+                        </div>
 
-                        <button type="button" onclick="prevPage('page2', 'page1')">Previous</button>
-                        <button type="button" onclick="nextPage('page2', 'page3')">Next</button>
+                        <!-- Question 4 -->
+                        <div id="q4_container" class="question-container" style="display: none;">
+                            <p><strong>Q4. What does CSS stand for?</strong></p>
+                            <input type="radio" id="q4_a" name="q4" value="A">
+                            <label for="q4_a">Computer Style Sheets</label><br>
+                            <input type="radio" id="q4_b" name="q4" value="B">
+                            <label for="q4_b">Cascading Style Sheets</label><br><br>
+                            <button type="button" onclick="nextQuestion()">Next Question</button>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div id="q5_container" class="question-container" style="display: none;">
+                            <p><strong>Q5. Which HTML tag is used to link an external JavaScript file?</strong></p>
+                            <input type="radio" id="q5_a" name="q5" value="A">
+                            <label for="q5_a">&lt;script&gt;</label><br>
+                            <input type="radio" id="q5_b" name="q5" value="B">
+                            <label for="q5_b">&lt;js&gt;</label><br><br>
+                            <button type="button" onclick="nextQuestion()">Finish Quiz</button>
+                        </div>
+
                     </div>
                 </div>
 
@@ -88,11 +116,21 @@
                     <div class="maintext">
                         <p>
                             <input type="checkbox" id="declaration" required>
-                            <label for="declaration">I hereby declare that all the answers provided by me are my own original work and I have not used any unfair means to complete this quiz.</label>
+                            <label for="declaration">I hereby declare that all the answers provided are my own original work.</label>
                         </p>
                         <br>
-                        <button type="button" onclick="prevPage('page3', 'page2')">Previous</button>
                         <button type="submit">Submit Quiz</button>
+                    </div>
+                </div>
+
+                <!-- PAGE 4: Results -->
+                <div id="page4" class="quiz-page" style="display: none; text-align: center;">
+                    <header class="mainheader">
+                        <h1>Quiz Results</h1>
+                    </header>
+                    <div class="maintext">
+                        <h2>Your Score: <span id="scoreDisplay" style="color: #007bff; font-size: 1.5rem;"></span> / 5</h2>
+                        <button type="button" onclick="location.reload()">Restart Quiz</button>
                     </div>
                 </div>
 
